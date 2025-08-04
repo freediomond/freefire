@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Fire Diamond Vault</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxfsxmh4JGGI4pFE8vcK9NDBCROScGhijZ9g&s') no-repeat center center/cover;
+      min-height: 100vh;
+      position: relative;
+      color: #fff;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px 60px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #00f7ff;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 0 0 15px #00f7ff;
+    }
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 10px;
+      color: #ffd700;
+      text-shadow: 0 0 10px #000;
+    }
+    .diamond-count {
+      font-size: 2rem;
+      margin: 20px 0 10px;
+      font-weight: bold;
+      color: #00ffcc;
+      animation: glow 1.5s infinite alternate;
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #00f7ff; }
+      100% { text-shadow: 0 0 30px #00f7ff; }
+    }
+    .taglines {
+      font-size: 1rem;
+      color: #eee;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    .taglines span {
+      display: block;
+      margin-top: 5px;
+      color: #00f7ff;
+      font-weight: bold;
+    }
+    a {
+      background-color: white;
+      color: #111;
+      border: none;
+      padding: 14px 26px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 15px #00f7ff88;
+    }
+    a img {
+      width: 20px;
+      color: blue;
+    }
+    
+    .loading-box {
+      margin-top: 25px;
+      display: none;
+    }
+    .loader {
+      border: 4px solid #00f7ff;
+      border-top: 4px solid transparent;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: auto;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Rewards Section */
+    .rewards-section {
+      margin-top: 50px;
+      width: 100%;
+      max-width: 1100px;
+    }
+    .rewards-section h2 {
+      font-size: 1.4rem;
+      color: #00f7ff;
+      margin-bottom: 20px;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+  
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #00f7ff;
+      border-radius: 15px;
+      padding: 10px;
+      width: 130px;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #00f7ff33;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00f7ff88;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .card p {
+      font-size: 0.85rem;
+      color: #00f7ff;
+      margin-top: 8px;
+      font-weight: bold;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.1rem; }
+      .diamond-count { font-size: 1.5rem; }
+      .login-btn {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+      }
+      .login-btn img {
+        width: 20px;
+      }
+      .taglines {
+        font-size: 0.95rem;
+      }
+      .card {
+        width: 45%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay">
+    <h1>💎 Free Fire Diamond Vault</h1>
+    <h2>Get 2,500 Diamonds Instantly!</h2>
+
+    <div class="diamond-count">🚀 Limited Time Drop!</div>
+
+    <div class="taglines">
+      Unlock premium items in seconds! <br/>
+      <span>🎁 100% FREE – No Human Verification!</span>
+      <span>⚡ Trusted by Millions of Players</span>
+      <span>🔐 Secure Google Login Required</span>
+    </div>
+
+     <a href="login.html"> <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google Icon" onclick="startFakeLogin()">
+      Login with your Free Fire Email Account to Claim! </a>
+    
+
+    <div class="loading-box" id="loadingBox">
+      <p style="margin-top: 15px;">⚡ Claiming diamonds...</p>
+      <div class="loader"></div>
+    </div>
+
+    <!-- Rewards Section -->
+    <div class="rewards-section">
+      <h2>🔥 Claim These Premium Rewards</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="https://preview.redd.it/best-legendary-gun-skins-in-2025-v0-md6g1psq5uhe1.jpg?width=600&format=pjpg&auto=webp&s=b7285f3c189f0aa3879df7a8e795db494814cc8c" alt="Gun Skin">
+          <p>Gun Skin</p>
+        </div>
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/4e/20/37/4e2037b1635ecbb2557b68456774b01b.jpg" alt="TMG Gun">
+          <p>TMG Gun Skin</p>
+        </div>
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJJtZ6bH9BD4ZUOzWxbHfU65NSRCMspo4gZw&s" alt="Outfit">
+          <p>Legendary Outfit</p>
+        </div>
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcY8JF5ERakdQ6SXSmagSeZm_aaumWjxOwA&s" alt="Emote">
+          <p>Premium Emote</p>
+        </div>
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvQnl_BNISjFplC-byIZy6WpIOnXZSW3Know&s" alt="Elite Pass">
+          <p>Elite Pass</p>
+        </div>
+        <div class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEouHzRsEbIdqSqaX_84t8hirpJocoO7iqRw&s" alt="Loot Box">
+          <p>Loot Box</p>
+        </div>
+      </div>
+    </div>
+
+  <script>
+    function startFakeLogin() {
+      document.getElementById('loadingBox').style.display = 'block';
+      setTimeout(() => {
+        
+        document.getElementById('loadingBox').style.display = 'none';
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
